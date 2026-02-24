@@ -8,7 +8,7 @@ public class UserMapper {
 public UserDto toDto(UserEntity userEntity){
 	return new UserDto(
             userEntity.getId(),
-            userEntity.getName(),
+            userEntity.getUsername(),
             userEntity.getEmail(),
             userEntity.getPassword()
     );
