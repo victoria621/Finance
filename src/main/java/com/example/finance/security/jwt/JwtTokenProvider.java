@@ -9,6 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.Date;
 import java.util.function.Function;
@@ -51,30 +52,26 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    // ИЗВЛЕЧЕНИЕ USERNAME ИЗ ТОКЕНА - ЭТОТ МЕТОД ВАМ НУЖЕН!
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
-    // Извлечение даты истечения токена
     public Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
-    // Обобщенный метод для извлечения любых данных из токена
     private <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
-    // Извлечение всех claims из токена
     private Claims extractAllClaims(String token) {
         try {
             return Jwts.parser()
-                    .setSigningKey(key())
+                    .verifyWith((SecretKey) key())
                     .build()
-                    .parseClaimsJws(token)
-                    .getBody();
+                    .parseSignedClaims(token)
+                    .getPayload();
         } catch (ExpiredJwtException e) {
             logger.error("JWT token is expired: {}", e.getMessage());
             throw e;
@@ -84,7 +81,7 @@ public class JwtTokenProvider {
         } catch (MalformedJwtException e) {
             logger.error("Invalid JWT token: {}", e.getMessage());
             throw e;
-        } catch (SignatureException e) {
+        } catch (SecurityException e) {
             logger.error("Invalid JWT signature: {}", e.getMessage());
             throw e;
         } catch (IllegalArgumentException e) {
@@ -93,12 +90,10 @@ public class JwtTokenProvider {
         }
     }
 
-    // Создание ключа для подписи
     private Key key() {
         return Keys.hmacShaKeyFor(jwtSecret.getBytes());
     }
 
-    // Проверка, истек ли токен
     private Boolean isTokenExpired(String token) {
         try {
             Date expiration = extractExpiration(token);
@@ -108,7 +103,6 @@ public class JwtTokenProvider {
         }
     }
 
-    // Валидация токена
     public Boolean validateToken(String token, UserDetails userDetails) {
         try {
             final String username = extractUsername(token);
@@ -119,10 +113,9 @@ public class JwtTokenProvider {
         }
     }
 
-    // Простая валидация токена (без сравнения с UserDetails)
     public Boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(key()).build().parseClaimsJws(token);
+            Jwts.parser().verifyWith((SecretKey )key()).build().parseSignedClaims(token);
             return true;
         } catch (JwtException | IllegalArgumentException e) {
             logger.error("Invalid JWT token: {}", e.getMessage());
@@ -130,13 +123,11 @@ public class JwtTokenProvider {
         }
     }
 
-    // Получить username из токена (синоним для extractUsername)
     public String getUsernameFromToken(String token) {
         return extractUsername(token);
     }
 
-    // Получить время истечения токена
-    public Long getExpirationTime() {
-        return Long.valueOf(jwtExpirationInMs);
+    public long getExpirationTime() {
+        return jwtExpirationInMs;
     }
 }
