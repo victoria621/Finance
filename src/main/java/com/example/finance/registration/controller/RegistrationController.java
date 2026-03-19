@@ -1,9 +1,9 @@
-package com.example.finance.controller;
+package com.example.finance.registration.controller;
 
-import com.example.finance.dto.responce.JwtResponse;
-import com.example.finance.dto.request.LoginRequest;
-import com.example.finance.dto.request.RegisterRequest;
-import com.example.finance.service.RegistrationService;
+import com.example.finance.registration.dto.responce.JwtResponse;
+import com.example.finance.registration.dto.request.LoginRequest;
+import com.example.finance.registration.dto.request.RegisterRequest;
+import com.example.finance.registration.service.RegistrationService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,6 +1,6 @@
-package com.example.finance.security.jwt;
+package com.example.finance.registration.security.jwt;
 
-import com.example.finance.service.UserDetailsServiceImpl;
+import com.example.finance.registration.service.UserDetailsServiceImpl;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

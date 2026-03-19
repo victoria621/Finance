@@ -1,4 +1,4 @@
-package com.example.finance.dto;
+package com.example.finance.registration.dto;
 
 import org.jetbrains.annotations.NotNull;
 

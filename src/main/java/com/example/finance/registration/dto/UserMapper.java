@@ -1,6 +1,6 @@
-package com.example.finance.dto;
+package com.example.finance.registration.dto;
 
-import com.example.finance.entity.UserEntity;
+import com.example.finance.registration.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
 @Component

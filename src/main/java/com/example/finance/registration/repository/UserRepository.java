@@ -1,6 +1,6 @@
-package com.example.finance.repository;
+package com.example.finance.registration.repository;
 
-import com.example.finance.entity.UserEntity;
+import com.example.finance.registration.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
