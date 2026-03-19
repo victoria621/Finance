@@ -1,4 +1,4 @@
-package com.example.finance.dto.responce;
+package com.example.finance.registration.dto.responce;
 
 public record JwtResponse(
         String token,

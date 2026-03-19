@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EntityScan("com.example.finance.entity")
-@EnableJpaRepositories("com.example.finance.repository")
+@EnableJpaRepositories("com.example.finance.registration.repository")
 public class FinanceApplication {
     public static void main(String[] args) {
         SpringApplication.run(FinanceApplication.class, args);

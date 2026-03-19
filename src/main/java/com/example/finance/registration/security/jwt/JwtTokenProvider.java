@@ -1,4 +1,4 @@
-package com.example.finance.security.jwt;
+package com.example.finance.registration.security.jwt;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

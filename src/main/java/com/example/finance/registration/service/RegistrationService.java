@@ -1,10 +1,10 @@
-package com.example.finance.service;
+package com.example.finance.registration.service;
 
-import com.example.finance.dto.request.LoginRequest;
-import com.example.finance.dto.request.RegisterRequest;
-import com.example.finance.dto.responce.JwtResponse;
-import com.example.finance.entity.UserEntity;
-import com.example.finance.repository.UserRepository;
+import com.example.finance.registration.dto.request.LoginRequest;
+import com.example.finance.registration.dto.request.RegisterRequest;
+import com.example.finance.registration.dto.responce.JwtResponse;
+import com.example.finance.registration.entity.UserEntity;
+import com.example.finance.registration.repository.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 

@@ -1,7 +1,7 @@
-package com.example.finance.service;
+package com.example.finance.registration.service;
 
-import com.example.finance.entity.UserEntity;
-import com.example.finance.repository.UserRepository;
+import com.example.finance.registration.entity.UserEntity;
+import com.example.finance.registration.repository.UserRepository;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

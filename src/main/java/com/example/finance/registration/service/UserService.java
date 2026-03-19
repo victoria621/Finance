@@ -1,9 +1,9 @@
-package com.example.finance.service;
+package com.example.finance.registration.service;
 
-import com.example.finance.dto.UserDto;
-import com.example.finance.dto.UserMapper;
-import com.example.finance.entity.UserEntity;
-import com.example.finance.repository.UserRepository;
+import com.example.finance.registration.dto.UserDto;
+import com.example.finance.registration.dto.UserMapper;
+import com.example.finance.registration.entity.UserEntity;
+import com.example.finance.registration.repository.UserRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

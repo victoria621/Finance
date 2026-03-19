@@ -1,4 +1,4 @@
-package com.example.finance.entity;
+package com.example.finance.registration.entity;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
